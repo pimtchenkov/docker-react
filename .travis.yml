@@ -1,0 +1,9 @@
+sude: required
+services:
+    - docker
+
+before_install:
+    - docker build -t pimtchenkov/docker-react:test-ci -f Dockerfile.dev .
+
+script:
+    - docker run pimtchenkov/docker-react:test-ci npm run test
