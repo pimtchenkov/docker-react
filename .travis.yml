@@ -9,14 +9,17 @@ script:
     - docker run pimtchenkov/docker-react:test-ci npm run test
     
 ### deploy section
-#deploy:
-#    provide: elasticbeanstalk
-#    region: "us-east-2"
-#    app: "docker-react"
-#    env: "DockerReact-env"
-#    bucket_name: "elasticbeanstalk-us-east-2-768318074260"
-#    bucket_path: "docker-react"
-#    on:
-#        branch: master
-#    access_key_id: $AWS_ACCESS_KEY
-#    secret_access_key: $AWS_SECRET_KEY
+deploy:
+    provider: elasticbeanstalk
+### region from URL from AWS application environment
+    region: "us-east-2"
+    app: "docker-react"
+    env: "DockerReact-env"
+### backet name from AWS 'Services'/S3
+    bucket_name: "elasticbeanstalk-us-east-2-768318074260"
+### backet path must be the same as 'app' above
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
